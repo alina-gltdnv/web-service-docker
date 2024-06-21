@@ -15,7 +15,13 @@ def thr_service():
         return jsonify({"error": "No data provided"}), 400
 
     age = data.get('age')
-    if not isinstance(age, int) or age < 18 or age > 99:
+    if not isinstance(age, int):
+        try:
+            age = int(age)
+        except (ValueError, TypeError):
+            return jsonify({"error": "Age must be an integer"}), 400
+
+    if age < 18 or age > 99:
         return jsonify({"error": "Enter an age greater than 17 and less than 100"}), 400
 
     lower, upper = thr_counter(age)
