@@ -5,6 +5,8 @@ import time
 app = Flask(__name__)
 
 REQUEST_TIME = Summary('request_processing_seconds', 'Time spent processing request')
+count_valid = Counter('requests_count_valid', 'The number of valid requests')
+count_invalid = Counter('requests_count_invalid', 'The number of invalid requests')
 
 
 @app.route('/calculations/target-heart-rate', methods=['POST'])
@@ -12,6 +14,7 @@ REQUEST_TIME = Summary('request_processing_seconds', 'Time spent processing requ
 def thr_service():
     data = request.get_json()
     if not data:
+        count_invalid.inc()
         return jsonify({"error": "No data provided"}), 400
 
     age = data.get('age')
@@ -19,9 +22,11 @@ def thr_service():
         try:
             age = int(age)
         except (ValueError, TypeError):
+            count_invalid.inc()
             return jsonify({"error": "Age must be an integer"}), 400
 
     if age < 18 or age > 99:
+        count_invalid.inc()
         return jsonify({"error": "Enter an age greater than 17 and less than 100"}), 400
 
     lower, upper = thr_counter(age)
@@ -31,6 +36,7 @@ def thr_service():
             "upperBound": upper
         }
     }
+    count_valid.inc()
     return jsonify(response), 200
 
 
