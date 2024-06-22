@@ -1,10 +1,11 @@
 from flask import Flask, request, jsonify
-from prometheus_client import start_http_server, Summary, Counter
+from prometheus_client import start_http_server, Histogram, Counter
 import time
 
 app = Flask(__name__)
 
-REQUEST_TIME = Summary('request_processing_seconds', 'Time spent processing request')
+REQUEST_TIME = Histogram('request_processing_seconds', 'Time spent processing request',
+                         buckets=[0.001, 0.01, 0.1, 0.5, 1, 2, 5, 10])
 count_valid = Counter('requests_count_valid', 'The number of valid requests')
 count_invalid = Counter('requests_count_invalid', 'The number of invalid requests')
 
