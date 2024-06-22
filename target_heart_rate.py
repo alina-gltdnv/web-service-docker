@@ -5,7 +5,8 @@ import time
 app = Flask(__name__)
 
 REQUEST_TIME = Histogram('request_processing_seconds', 'Time spent processing request',
-                         buckets=[0.001, 0.01, 0.1, 0.5, 1, 2, 5, 10])
+                         buckets=[0.0001, 0.0002, 0.0003, 0.0004, 0.0005, 0.001, 0.002, 0.003, 0.004, 0.005, 0.01, 0.05,
+                                  0.1, 0.5, 1, 2, 5, 10])
 count_valid = Counter('requests_count_valid', 'The number of valid requests')
 count_invalid = Counter('requests_count_invalid', 'The number of invalid requests')
 
