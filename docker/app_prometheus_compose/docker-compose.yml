@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  web_app:
+    image: app
+    container_name: app_container
+    ports:
+      - "5000:5000"
+      - "8333:8333"
+    networks:
+      - monitoring
+
+  prometheus:
+    image: prom/prometheus
+    user: root
+    container_name: prometheus
+    volumes:
+      - /home/user/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+      - /home/user/prometheus/data:/prometheus
+    ports:
+      - "9090:9090"
+    networks:
+      - monitoring
+networks:
+  monitoring:
+    driver: bridge
