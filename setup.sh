@@ -18,7 +18,7 @@ echo "Replacing otel-collector-config.yaml for Signoz"
 cp -fr ./web-service-docker/docker/signoz_compose/otel-collector-config.yaml ./signoz/deploy/docker/clickhouse-setup
 
 echo "Building docker image for App"
-sudo docker build --no-cache -t app /web-service-docker/docker/app_image/
+sudo docker build --no-cache -t app ./web-service-docker/docker/app_image/
 
 echo "Starting Signoz"
 sudo docker compose -f ./signoz/deploy/docker/clickhouse-setup/docker-compose.yaml up -d

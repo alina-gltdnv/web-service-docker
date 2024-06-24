@@ -15,8 +15,8 @@ services:
     user: root
     container_name: prometheus
     volumes:
-      - ./web-service-docker/docker/prometheus_config/prometheus.yml:/etc/prometheus/prometheus.yml
-      - /home/user/prometheus/data:/prometheus
+      - ./../prometheus_config/prometheus.yml:/etc/prometheus/prometheus.yml
+      - .:/prometheus
     ports:
       - "9090:9090"
     networks:
