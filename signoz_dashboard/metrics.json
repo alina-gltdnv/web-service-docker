@@ -1,0 +1,568 @@
+{
+  "description": "",
+  "layout": [
+    {
+      "h": 6,
+      "i": "2a05d1e6-5fc2-4477-8c72-63d8a21780dd",
+      "moved": false,
+      "static": false,
+      "w": 6,
+      "x": 0,
+      "y": 0
+    },
+    {
+      "h": 6,
+      "i": "e2f3c10e-277c-49be-8d4d-843f49befd9a",
+      "moved": false,
+      "static": false,
+      "w": 6,
+      "x": 6,
+      "y": 0
+    },
+    {
+      "h": 6,
+      "i": "0fd9eb6f-e93b-4ea9-98a6-106f68dd8c16",
+      "moved": false,
+      "static": false,
+      "w": 6,
+      "x": 0,
+      "y": 6
+    },
+    {
+      "h": 6,
+      "i": "b97eace8-62a8-42c0-b40f-4cf0f3718c17",
+      "moved": false,
+      "static": false,
+      "w": 6,
+      "x": 6,
+      "y": 6
+    },
+    {
+      "h": 6,
+      "i": "2b2db93d-d501-428d-b5ea-0042ea3a6650",
+      "moved": false,
+      "static": false,
+      "w": 6,
+      "x": 3,
+      "y": 12
+    }
+  ],
+  "name": "",
+  "panelMap": {},
+  "tags": [],
+  "title": "App Metrics",
+  "uploadedGrafana": false,
+  "variables": {},
+  "widgets": [
+    {
+      "bucketCount": 30,
+      "bucketWidth": 0,
+      "columnUnits": {},
+      "description": "",
+      "fillSpans": false,
+      "id": "e2f3c10e-277c-49be-8d4d-843f49befd9a",
+      "isStacked": false,
+      "mergeAllActiveQueries": false,
+      "nullZeroValues": "zero",
+      "opacity": "1",
+      "panelTypes": "graph",
+      "query": {
+        "builder": {
+          "queryData": [
+            {
+              "aggregateAttribute": {
+                "dataType": "float64",
+                "id": "request_processing_seconds_count--float64--Sum--true",
+                "isColumn": true,
+                "isJSON": false,
+                "key": "request_processing_seconds_count",
+                "type": "Sum"
+              },
+              "aggregateOperator": "rate",
+              "dataSource": "metrics",
+              "disabled": false,
+              "expression": "A",
+              "filters": {
+                "items": [
+                  {
+                    "id": "eb2ac294",
+                    "key": {
+                      "dataType": "string",
+                      "id": "status--string--tag--false",
+                      "isColumn": false,
+                      "isJSON": false,
+                      "key": "status",
+                      "type": "tag"
+                    },
+                    "op": "=",
+                    "value": "200"
+                  }
+                ],
+                "op": "AND"
+              },
+              "functions": [],
+              "groupBy": [],
+              "having": [],
+              "legend": "{{path}}",
+              "limit": null,
+              "orderBy": [],
+              "queryName": "A",
+              "reduceTo": "sum",
+              "spaceAggregation": "sum",
+              "stepInterval": 60,
+              "timeAggregation": "rate"
+            }
+          ],
+          "queryFormulas": []
+        },
+        "clickhouse_sql": [
+          {
+            "disabled": false,
+            "legend": "",
+            "name": "A",
+            "query": ""
+          }
+        ],
+        "id": "ca02bfa2-5e05-4a6a-b2b1-ab698fe46674",
+        "promql": [
+          {
+            "disabled": false,
+            "legend": "Valid Requests",
+            "name": "A",
+            "query": "rate (requests_count_valid_total [1m])"
+          },
+          {
+            "disabled": false,
+            "legend": "Invalid Requests",
+            "name": "B",
+            "query": "rate (requests_count_invalid_total [1m])"
+          }
+        ],
+        "queryType": "promql"
+      },
+      "selectedLogFields": [],
+      "selectedTracesFields": [],
+      "softMax": 0,
+      "softMin": 0,
+      "stackedBarChart": false,
+      "thresholds": [],
+      "timePreferance": "GLOBAL_TIME",
+      "title": "Requests Per Second (valid / invalid)",
+      "yAxisUnit": "none"
+    },
+    {
+      "bucketCount": 30,
+      "bucketWidth": 0,
+      "columnUnits": {},
+      "description": "",
+      "fillSpans": false,
+      "id": "2a05d1e6-5fc2-4477-8c72-63d8a21780dd",
+      "isStacked": false,
+      "mergeAllActiveQueries": false,
+      "nullZeroValues": "zero",
+      "opacity": "1",
+      "panelTypes": "graph",
+      "query": {
+        "builder": {
+          "queryData": [
+            {
+              "aggregateAttribute": {
+                "dataType": "float64",
+                "id": "request_processing_seconds_count--float64--Sum--true",
+                "isColumn": true,
+                "isJSON": false,
+                "key": "request_processing_seconds_count",
+                "type": "Sum"
+              },
+              "aggregateOperator": "sum_rate",
+              "dataSource": "metrics",
+              "disabled": false,
+              "expression": "A",
+              "filters": {
+                "items": [],
+                "op": "AND"
+              },
+              "functions": [],
+              "groupBy": [],
+              "having": [],
+              "legend": "RPS",
+              "limit": null,
+              "orderBy": [],
+              "queryName": "A",
+              "reduceTo": "sum",
+              "spaceAggregation": "sum",
+              "stepInterval": 60,
+              "timeAggregation": "rate"
+            }
+          ],
+          "queryFormulas": []
+        },
+        "clickhouse_sql": [
+          {
+            "disabled": false,
+            "legend": "",
+            "name": "A",
+            "query": ""
+          }
+        ],
+        "id": "e63a05aa-2884-48b5-8bd8-b445998f6242",
+        "promql": [
+          {
+            "disabled": false,
+            "legend": "",
+            "name": "A",
+            "query": ""
+          }
+        ],
+        "queryType": "builder"
+      },
+      "selectedLogFields": [],
+      "selectedTracesFields": [],
+      "softMax": 0,
+      "softMin": 0,
+      "stackedBarChart": false,
+      "thresholds": [],
+      "timePreferance": "GLOBAL_TIME",
+      "title": "Requests Per Second",
+      "yAxisUnit": "reqps"
+    },
+    {
+      "bucketCount": 30,
+      "bucketWidth": 0,
+      "columnUnits": {},
+      "description": "",
+      "fillSpans": false,
+      "id": "0fd9eb6f-e93b-4ea9-98a6-106f68dd8c16",
+      "isStacked": false,
+      "mergeAllActiveQueries": false,
+      "nullZeroValues": "zero",
+      "opacity": "1",
+      "panelTypes": "graph",
+      "query": {
+        "builder": {
+          "queryData": [
+            {
+              "aggregateAttribute": {
+                "dataType": "float64",
+                "id": "request_processing_seconds_sum--float64--Sum--true",
+                "isColumn": true,
+                "isJSON": false,
+                "key": "request_processing_seconds_sum",
+                "type": "Sum"
+              },
+              "aggregateOperator": "rate",
+              "dataSource": "metrics",
+              "disabled": false,
+              "expression": "A",
+              "filters": {
+                "items": [
+                  {
+                    "id": "574b4ba5",
+                    "key": {
+                      "dataType": "string",
+                      "id": "status--string--tag--false",
+                      "isColumn": false,
+                      "isJSON": false,
+                      "key": "status",
+                      "type": "tag"
+                    },
+                    "op": "=",
+                    "value": "200"
+                  }
+                ],
+                "op": "AND"
+              },
+              "functions": [],
+              "groupBy": [],
+              "having": [],
+              "legend": "{{path}}",
+              "limit": null,
+              "orderBy": [],
+              "queryName": "A",
+              "reduceTo": "sum",
+              "spaceAggregation": "sum",
+              "stepInterval": 60,
+              "timeAggregation": "rate"
+            },
+            {
+              "aggregateAttribute": {
+                "dataType": "float64",
+                "id": "request_processing_seconds_sum--float64--Sum--true",
+                "isColumn": true,
+                "isJSON": false,
+                "key": "request_processing_seconds_sum",
+                "type": "Sum"
+              },
+              "aggregateOperator": "rate",
+              "dataSource": "metrics",
+              "disabled": false,
+              "expression": "B",
+              "filters": {
+                "items": [
+                  {
+                    "id": "4e26b4a7",
+                    "key": {
+                      "dataType": "string",
+                      "id": "status--string--tag--false",
+                      "isColumn": false,
+                      "isJSON": false,
+                      "key": "status",
+                      "type": "tag"
+                    },
+                    "op": "=",
+                    "value": "200"
+                  }
+                ],
+                "op": "AND"
+              },
+              "functions": [],
+              "groupBy": [],
+              "having": [],
+              "legend": "{{path}}",
+              "limit": null,
+              "orderBy": [],
+              "queryName": "B",
+              "reduceTo": "sum",
+              "spaceAggregation": "sum",
+              "stepInterval": 60,
+              "timeAggregation": "rate"
+            }
+          ],
+          "queryFormulas": []
+        },
+        "clickhouse_sql": [
+          {
+            "disabled": false,
+            "legend": "",
+            "name": "A",
+            "query": ""
+          }
+        ],
+        "id": "a9c54fc6-6e4d-48a4-8390-dbd3fda19e0e",
+        "promql": [
+          {
+            "disabled": false,
+            "legend": "Response Time",
+            "name": "A",
+            "query": "rate(request_processing_seconds_sum[1m]) / rate(request_processing_seconds_count[1m])"
+          }
+        ],
+        "queryType": "promql"
+      },
+      "selectedLogFields": [],
+      "selectedTracesFields": [],
+      "softMax": 0,
+      "softMin": 0,
+      "stackedBarChart": false,
+      "thresholds": [],
+      "timePreferance": "GLOBAL_TIME",
+      "title": "Average Response time",
+      "yAxisUnit": "s"
+    },
+    {
+      "bucketCount": 30,
+      "bucketWidth": 0,
+      "columnUnits": {},
+      "description": "",
+      "fillSpans": false,
+      "id": "b97eace8-62a8-42c0-b40f-4cf0f3718c17",
+      "isStacked": false,
+      "mergeAllActiveQueries": false,
+      "nullZeroValues": "zero",
+      "opacity": "1",
+      "panelTypes": "graph",
+      "query": {
+        "builder": {
+          "queryData": [
+            {
+              "aggregateAttribute": {
+                "dataType": "",
+                "id": "------false",
+                "isColumn": false,
+                "isJSON": false,
+                "key": "",
+                "type": ""
+              },
+              "aggregateOperator": "count",
+              "dataSource": "metrics",
+              "disabled": false,
+              "expression": "A",
+              "filters": {
+                "items": [],
+                "op": "AND"
+              },
+              "functions": [],
+              "groupBy": [],
+              "having": [],
+              "legend": "",
+              "limit": null,
+              "orderBy": [],
+              "queryName": "A",
+              "reduceTo": "sum",
+              "spaceAggregation": "sum",
+              "stepInterval": 60,
+              "timeAggregation": "rate"
+            }
+          ],
+          "queryFormulas": []
+        },
+        "clickhouse_sql": [
+          {
+            "disabled": false,
+            "legend": "",
+            "name": "A",
+            "query": ""
+          }
+        ],
+        "id": "c6b6a82d-f967-4ebc-8e2b-9147804ae9b7",
+        "promql": [
+          {
+            "disabled": false,
+            "legend": "Response time - p90",
+            "name": "A",
+            "query": "histogram_quantile(0.9, rate(request_processing_seconds_bucket[1m]))"
+          }
+        ],
+        "queryType": "promql"
+      },
+      "selectedLogFields": [],
+      "selectedTracesFields": [],
+      "softMax": 0,
+      "softMin": 0,
+      "stackedBarChart": false,
+      "thresholds": [],
+      "timePreferance": "GLOBAL_TIME",
+      "title": "Response Time - p90 ",
+      "yAxisUnit": "s"
+    },
+    {
+      "bucketCount": 30,
+      "bucketWidth": 0,
+      "columnUnits": {},
+      "description": "",
+      "fillSpans": false,
+      "id": "2b2db93d-d501-428d-b5ea-0042ea3a6650",
+      "isStacked": false,
+      "mergeAllActiveQueries": false,
+      "nullZeroValues": "zero",
+      "opacity": "1",
+      "panelTypes": "graph",
+      "query": {
+        "builder": {
+          "queryData": [
+            {
+              "aggregateAttribute": {
+                "dataType": "float64",
+                "id": "request_processing_seconds_bucket--float64--Histogram--true",
+                "isColumn": true,
+                "isJSON": false,
+                "key": "request_processing_seconds_bucket",
+                "type": "Histogram"
+              },
+              "aggregateOperator": "noop",
+              "dataSource": "metrics",
+              "disabled": false,
+              "expression": "A",
+              "filters": {
+                "items": [],
+                "op": "AND"
+              },
+              "functions": [],
+              "groupBy": [],
+              "having": [],
+              "legend": "{{le}}",
+              "limit": null,
+              "orderBy": [],
+              "queryName": "A",
+              "reduceTo": "avg",
+              "spaceAggregation": "sum",
+              "stepInterval": 60,
+              "timeAggregation": "noop"
+            }
+          ],
+          "queryFormulas": []
+        },
+        "clickhouse_sql": [
+          {
+            "disabled": false,
+            "legend": "",
+            "name": "A",
+            "query": ""
+          }
+        ],
+        "id": "046c77f7-13a3-4c79-abf5-85a13d239b90",
+        "promql": [
+          {
+            "disabled": false,
+            "legend": "{{le}}",
+            "name": "A",
+            "query": "request_processing_seconds_bucket"
+          }
+        ],
+        "queryType": "builder"
+      },
+      "selectedLogFields": [
+        {
+          "dataType": "string",
+          "name": "body",
+          "type": ""
+        },
+        {
+          "dataType": "string",
+          "name": "timestamp",
+          "type": ""
+        }
+      ],
+      "selectedTracesFields": [
+        {
+          "dataType": "string",
+          "id": "serviceName--string--tag--true",
+          "isColumn": true,
+          "isJSON": false,
+          "key": "serviceName",
+          "type": "tag"
+        },
+        {
+          "dataType": "string",
+          "id": "name--string--tag--true",
+          "isColumn": true,
+          "isJSON": false,
+          "key": "name",
+          "type": "tag"
+        },
+        {
+          "dataType": "float64",
+          "id": "durationNano--float64--tag--true",
+          "isColumn": true,
+          "isJSON": false,
+          "key": "durationNano",
+          "type": "tag"
+        },
+        {
+          "dataType": "string",
+          "id": "httpMethod--string--tag--true",
+          "isColumn": true,
+          "isJSON": false,
+          "key": "httpMethod",
+          "type": "tag"
+        },
+        {
+          "dataType": "string",
+          "id": "responseStatusCode--string--tag--true",
+          "isColumn": true,
+          "isJSON": false,
+          "key": "responseStatusCode",
+          "type": "tag"
+        }
+      ],
+      "softMax": 0,
+      "softMin": 0,
+      "stackedBarChart": false,
+      "thresholds": [],
+      "timePreferance": "GLOBAL_TIME",
+      "title": "Requests Count by Response Time",
+      "yAxisUnit": "short"
+    }
+  ],
+  "uuid": "2e84b271-94df-4bcd-a14c-9ccf4b4c09fc"
+}

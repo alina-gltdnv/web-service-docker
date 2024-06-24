@@ -1,17 +1,35 @@
 # Web-service-docker
 
-Little docker project
+## Overview
+This project contains a Python Flask web-service that uses the Prometheus-client for monitoring and visualization in Signoz.
 
-## Run commands
+## Installation
+To get started with this project, follow these steps:
 
-
+1. Clone the repository:
 ```bash
-# build docker image with flask app
-sudo docker build --no-cache -t app /home/user/docker/image_test1/
+git clone https://github.com/alina-gltdnv/web-service-docker.git
+```
+2. Run [setup.sh](setup.sh) to set up the environment and build Docker containers:
+```bash
+sudo chmod +x ./web-service-docker/setup.sh
+sudo ./web-service-docker/setup.sh
+```
 
-# docker compose up - app with prometheus
-sudo docker compose -f /home/user/docker/compose/docker-compose.yml up -d
+## Usage
+After the containers are up and running, you can access the following services:
 
-# docker compose up - signoz
-sudo docker compose -f /home/user/docker/signoz/deploy/docker/clickhouse-setup/docker-compose.yaml up -d
+- Flask Web-Service: http://localhost:5000
+- Prometheus: http://localhost:9090
+- Signoz: http://localhost:3301
+
+## Monitoring
+The Flask web-service exposes metrics using Prometheus-client, which are collected and visualized in Signoz.
+
+Use [metrics.json](signoz_dashboard/metrics.json) to import dashboard to your Signoz web interface.
+
+## Test
+Run [loader.py](loader.py) to send traffic to the service.
+```bash
+python3 ./web-service-docker/loader.py
 ```

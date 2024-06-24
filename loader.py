@@ -18,6 +18,6 @@ if __name__ == '__main__':
         while True:
             req, resp, dur = target_heart_rate()
             print(f"req {req}, resp {resp}, dur {dur}")
-            time.sleep(0.5)
+            time.sleep(1)
     except Exception as e:
         print(e)
