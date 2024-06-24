@@ -17,6 +17,9 @@ cp -fr ./web-service-docker/docker/signoz_compose/docker-compose.yaml ./signoz/d
 echo "Replacing otel-collector-config.yaml for Signoz"
 cp -fr ./web-service-docker/docker/signoz_compose/otel-collector-config.yaml ./signoz/deploy/docker/clickhouse-setup
 
+echo "Creating dir for Prometheus logs"
+sudo mkdir prometheus_data
+
 echo "Building docker image for App"
 sudo docker build --no-cache -t app ./web-service-docker/docker/app_image/
 
