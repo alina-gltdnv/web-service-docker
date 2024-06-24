@@ -15,7 +15,11 @@ git clone https://github.com/alina-gltdnv/web-service-docker.git
 sudo chmod +x ./web-service-docker/setup.sh
 sudo ./web-service-docker/setup.sh
 ```
-
+3. Run [shutdown.sh](shutdown.sh) to stop containers:
+```bash
+sudo chmod +x ./web-service-docker/shutdown.sh
+sudo ./web-service-docker/shutdown.sh
+```
 ## Usage
 After the containers are up and running, you can access the following services:
 
