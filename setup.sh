@@ -21,7 +21,8 @@ echo ":::::Creating dir for Prometheus logs:::::"
 sudo mkdir prometheus_data
 
 echo ":::::Building docker image for App:::::"
-sudo docker build --no-cache -t app ./web-service-docker/docker/app_image/
+#sudo docker build --no-cache -t app ./web-service-docker/docker/app_image/
+sudo docker build --no-cache -t app -f web-service-docker/docker/app_image/Dockerfile web-service-docker/
 
 echo ":::::Starting Signoz:::::"
 sudo docker compose -f ./signoz/deploy/docker/clickhouse-setup/docker-compose.yaml up -d

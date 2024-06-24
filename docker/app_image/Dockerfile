@@ -2,8 +2,8 @@ FROM python:3
 
 #WORKDIR /usr/src/app
 
-COPY web-service-docker/target_heart_rate.py .
-COPY web-service-docker/requirements.txt .
+COPY target_heart_rate.py .
+COPY requirements.txt .
 
 RUN pip install -r requirements.txt
 
